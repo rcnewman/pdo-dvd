@@ -4,7 +4,7 @@ $dbname = 'dvd';
 $user = 'student';
 $pass = 'ttrojan';
 
-title = $_GET['title']; // $_REQUEST['artist']
+$title = $_GET['title']; // $_REQUEST['artist']
 $pdo = new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
 
 $sql = "SELECT title, rating, genre, format
@@ -26,10 +26,33 @@ $movies = $statement->fetchAll(PDO::FETCH_OBJ);
 
 //var_dump($songs);
 
-foreach($movies as $movie) : ?>
+?>
  <h3>
- 	<?php echo $movie->g_name ?> - <?php echo $song-> title?>
+ 	You searched for "<?php echo $title; ?>"
  </h3>
- <p> Play Count: <?php echo $song->play_count ?></p>
- <p> $<?php echo $song->price ?></p>
-<?php endforeach; ?>
+<?php if (sizeof($movies) > 0) {?>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>Rating</td>
+            <td>Genre</td>
+            <td>Format</td>
+        </tr>
+        <?php foreach($movies as $movie) : ?>
+        <tr>
+            <td><?php echo $movie->title; ?></td>
+            <td><?php echo $movie->rating; ?></td>
+            <td><?php echo $movie->genre; ?></td>
+            <td><?php echo $movie->format; ?></td>
+        </tr>
+        <?php endforeach ?>
+    </table>
+
+<?php }
+
+    else {
+    echo 'Nothing was found, please <a href="search.php">return</a>';
+    }
+?>
+
+
