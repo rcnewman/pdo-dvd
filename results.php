@@ -27,11 +27,16 @@ $movies = $statement->fetchAll(PDO::FETCH_OBJ);
 //var_dump($songs);
 
 ?>
+<style>
+  table, td{
+      border:1px solid black;
+  }
+</style>
  <h3>
  	You searched for "<?php echo $title; ?>"
  </h3>
 <?php if (sizeof($movies) > 0) {?>
-    <table>
+    <table style="border:1;">
         <tr>
             <td>Title</td>
             <td>Rating</td>
