@@ -1,11 +1,11 @@
-<php
+<?php
 require_once 'db.php';
 require_once 'classes/ArtistQuery.php';
 require_once 'classes/GenreQuery.php';
 require_once 'classes/ArtistMenu.php';
 require_once 'classes/GenreMenu.php';
 
-$artistQuest = new ArtistQuery($pdo);
+$artistQuery = new ArtistQuery($pdo);
 $artists = $artistQuery->getAll();
 
 $genreQuery = new GenreQuery($pdo);
